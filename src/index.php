@@ -1,7 +1,7 @@
 <?php $tpl = 'default';
 $page = new stdClass;
-$page->title = 'KeywordCMS';
-$page->subtitle = 'SEO Automation At Its Best!';
+$page->title = 'KeywordCMS Demo';
+$page->subtitle = 'Simplified SEO';
 
 require($_SERVER['DOCUMENT_ROOT'].'/inc/site.php');
 ?>
