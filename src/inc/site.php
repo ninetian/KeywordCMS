@@ -27,12 +27,17 @@ if (preg_match('/\.php$/', $path)) {header("Location: ".preg_replace(
 
 // Fetch last modified times and sitemap
 $lastmod       = filemtime($_SERVER['SCRIPT_FILENAME']);
-$lastmod_map   = filemtime('sitemap.json');
-$lastmod_kwrds = filemtime('inc/keyword_excludes.php');
-$sitemap       = json_decode(file_get_contents('sitemap.json'));
-$lastmod_obj   = file_exists('lastmod.json') ?
- json_decode(file_get_contents('lastmod.json'))
- : new stdClass;
+$lastmod_map   = filemtime($_SERVER['DOCUMENT_ROOT'].
+ '/sitemap.json');
+$lastmod_kwrds = filemtime($_SERVER['DOCUMENT_ROOT'].
+ '/inc/keyword_excludes.php');
+$sitemap       = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].
+ '/sitemap.json'));
+$lastmod_obj   = file_exists($_SERVER['DOCUMENT_ROOT'].
+ '/lastmod.json') ?
+  json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].
+   '/lastmod.json'))
+  : new stdClass;
 
 // Look for cache-kill flag
 if (array_key_exists('au', $_GET) // Really cheesy authentication
@@ -143,7 +148,8 @@ header('X-Cached: 0');
 
 // Stuff lastmod
 $lastmod_obj->{$path} = $lastmod;
-file_put_contents('lastmod.json', prettyPrint(json_encode($lastmod_obj)));
+file_put_contents($_SERVER['DOCUMENT_ROOT'].
+ '/lastmod.json', prettyPrint(json_encode($lastmod_obj)));
 
 // Build out sitemap and menu
 $nav           = '<ul class="nav">';
