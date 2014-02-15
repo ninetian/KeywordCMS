@@ -1,0 +1,32 @@
+[
+	{
+		"level": 1,
+		"menu": "Home",
+		"section": "Home",
+		"title": "KeywordCMS Demo Homepage",
+		"path": "\/",
+		"target": null,
+		"priority": 1,
+		"changefreq": "monthly"
+	},
+	{
+		"level": 1,
+		"menu": "About",
+		"section": "About KeywordCMS",
+		"title": "About KeywordCMS",
+		"path": "\/About-KeywordCMS",
+		"target": null,
+		"priority": 1,
+		"changefreq": "monthly"
+	},
+	{
+		"level": 1,
+		"menu": "Features",
+		"section": "KeywordCMS Features",
+		"title": "KeywordCMS Feature List",
+		"path": "\/KeywordCMS-Features",
+		"target": null,
+		"priority": 1,
+		"changefreq": "monthly"
+	}
+]

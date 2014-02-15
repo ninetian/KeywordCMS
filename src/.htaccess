@@ -1,0 +1,21 @@
+# A simple rewrite to redirect to .php variants
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_URI} !^/$
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !\.php$
+    RewriteRule ^(.*)$ $1.php [L,QSA]
+</IfModule>
+
+# A few caching defaults
+<ifModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/gif "access plus 1 months"
+    ExpiresByType image/jpg "access plus 1 months"
+    ExpiresByType image/jpeg "access plus 1 months"
+    ExpiresByType image/png "access plus 1 months"
+    ExpiresByType application/javascript "now plus 1 months"
+    ExpiresByType application/x-javascript "now plus 1 months"
+    ExpiresByType text/javascript "now plus 1 months"
+    ExpiresByType text/css "now plus 1 months"
+    ExpiresDefault "access plus 1 days"
+</IfModule>

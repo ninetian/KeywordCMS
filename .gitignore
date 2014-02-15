@@ -1,0 +1,14 @@
+# IDE Cruft. Nobody wants your custom IDE configurations, bro.
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# OSX filesystem cruft. Put these in the repo and find yourself no longer affiliated with Aralarinda.
+.DS_Store
+
+# Automatically generated files
+error_log
+lastmod.json
+
+# Caches
+*._c
