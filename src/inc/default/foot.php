@@ -1,5 +1,5 @@
 <?php if (!isset($tpl)) {header("HTTP/1.0 404 Not Found"); die();} ?>
-
+    </div>
 	<div id="footer" class="cf">
 		<?php if ($nav) echo($nav); ?>
 

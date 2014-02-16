@@ -7,7 +7,7 @@
  you'd expect with any quick-and-dirty solution.
 
  More or less, the whole CMS is a hack with a couple of worthwhile features;
- it'll get cleaned up, someday. I may even add a config file!
+ it'll get cleaned up, someday. Maybe I'll even tweet about it!
 
  At least I attempted to document. :)
 
@@ -17,8 +17,9 @@
 if (!isset($tpl)) {header("HTTP/1.0 404 Not Found"); die;}
 
 // Fetch the URL path
-$path = preg_replace('/\/[\s\S]*(\/$)|(\/{0,1}\?[\s\S]*$)/', '',
+$path = preg_replace('/(\/)?(\?.*)?$/', '',
  $_SERVER['REQUEST_URI']);
+
 if (empty($path)) $path = '/';
 
 // Redirect .php files; works hand-in-hand with the rewrite in our .htaccess
@@ -31,8 +32,8 @@ $lastmod_map   = filemtime($_SERVER['DOCUMENT_ROOT'].
  '/sitemap.json');
 $lastmod_kwrds = filemtime($_SERVER['DOCUMENT_ROOT'].
  '/inc/keyword_excludes.php');
-$sitemap       = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].
- '/sitemap.json'));
+$sitemap       = json_decode(file_get_contents(
+ $_SERVER['DOCUMENT_ROOT'].'/sitemap.json'));
 $lastmod_obj   = file_exists($_SERVER['DOCUMENT_ROOT'].
  '/lastmod.json') ?
   json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].
@@ -48,7 +49,7 @@ if (array_key_exists('au', $_GET) // Really cheesy authentication
 	header('Content-Type: text/plain; charset=utf-8');
 	if ($_GET['htmlcache'] === 'all') {
 		echo "Clearing all cache...\n\n";
-		passthru('find . -type f -name "*._c" -exec echo "Found {}..." \; -exec rm {} \;');
+		passthru('cd '.$_SERVER['DOCUMENT_ROOT'].' && find . -type f -name "*._c" -exec echo "Found {}..." \; -exec rm {} \;');
 	} elseif (file_exists($_SERVER['SCRIPT_FILENAME'].'._c')) {
 		echo 'Found '.$_SERVER['SCRIPT_FILENAME'].'._c'.'...';
 		unlink($_SERVER['SCRIPT_FILENAME'].'._c');
@@ -165,8 +166,10 @@ $menu_level    = 0;
 $menu_exclude  = array(); // Exclude menu from keywords;
 
 foreach ($sitemap as $i => $sitemap_page) {
+    if (property_exists($sitemap_page, 'nomenu')) continue;
+
 	if ($path === $sitemap_page->path) {
-			$active = true;
+		$active = true;
 	} else {
 		$active = false;
 	}

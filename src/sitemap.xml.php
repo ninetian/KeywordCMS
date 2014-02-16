@@ -27,7 +27,7 @@ $lastmod = json_decode(file_get_contents('lastmod.json')); ?>
 
 		echo '
 	<url>
-		<loc>http://domain.com/'.$page->path.'</loc>'.(
+		<loc>http://bronstrup.com/keywordcms'.$page->path.'</loc>'.(
 		 $page->priority
 		  ? '
 		<priority>'.$page->priority.'</priority>'

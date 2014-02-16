@@ -66,8 +66,8 @@ function prettyPrint($json) {
  word or words in out keyword exclusion list.
 */
 function metaleven($a, $b) {
-    $a = preg_replace('/,-\'/u', '', $a);
-    $b = preg_replace('/,-\'/u', '', $b);
-    return 100 *
-    (max(strlen($a),strlen($b)) / (levenshtein(metaphone($a),metaphone($b))+1));
+	$a = preg_replace('/,-\'/u', '', $a);
+	$b = preg_replace('/,-\'/u', '', $b);
+	return 100 *
+		(max(strlen($a),strlen($b)) / (levenshtein(metaphone($a),metaphone($b))+1));
 }

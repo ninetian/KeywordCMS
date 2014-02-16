@@ -19,7 +19,7 @@
 		<?php if ($nav) echo($nav); ?>
 	</div>
 
-	<div id="content" class="left">
+	<div id="content">
 		<h1 class="page_title">
 			<?php echo($page->title); ?>
 		</h1>

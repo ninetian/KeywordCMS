@@ -1,4 +1,6 @@
 <?php if (!isset($tpl)) {header("HTTP/1.0 404 Not Found"); die;} ?>
+<script type="text/javascript" src="//use.typekit.net/pda8moz.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </body>
 </html><?php $ob = preg_replace('/[\r\n\t]+/u', '', ob_get_clean());
 

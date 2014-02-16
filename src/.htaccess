@@ -1,5 +1,8 @@
 # A simple rewrite to redirect to .php variants
 <IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_HOST} !^keywordcms\.bronstrup\.com$ [NC]
+    RewriteRule ^(.*)$ http://keywordcms.bronstrup.com/$1 [L,R=301]
+
     RewriteCond %{REQUEST_URI} !^/$
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !\.php$
