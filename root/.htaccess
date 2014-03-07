@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+	# Replace this
+	RewriteCond %{HTTP_HOST} !^keywordcms-oo\.bronstrup\.com$ [NC]
+	RewriteRule ^(.*)$ http://keywordcms-oo.bronstrup.com/$1 [L,R=301]
+
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !^/index\.php$
+	RewriteRule ^(.*)$ index.php [L,QSA]
+</IfModule>
+
+# A few caching defaults
+<ifModule mod_expires.c>
+	ExpiresActive On
+	ExpiresByType image/gif "access plus 1 months"
+	ExpiresByType image/jpg "access plus 1 months"
+	ExpiresByType image/jpeg "access plus 1 months"
+	ExpiresByType image/png "access plus 1 months"
+	ExpiresByType application/javascript "now plus 1 months"
+	ExpiresByType application/x-javascript "now plus 1 months"
+	ExpiresByType text/javascript "now plus 1 months"
+	ExpiresByType text/css "now plus 1 months"
+	ExpiresDefault "access plus 1 days"
+</IfModule>
