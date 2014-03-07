@@ -12,6 +12,7 @@
  At least I attempted to document. :)
 
  */
+namespace kcms;
 
 // No template specified? We're probably not being called correctly... ABORT!
 if (!isset($tpl)) {header("HTTP/1.0 404 Not Found"); die;}

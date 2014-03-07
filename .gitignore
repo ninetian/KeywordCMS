@@ -11,4 +11,7 @@ error_log
 lastmod.json
 
 # Caches
-*._c
+cache/
+
+# Proof-of-concept sources
+src/
